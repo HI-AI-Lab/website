@@ -62,11 +62,17 @@ function activateCountry(targetId){
 }
 
 countryNodes.forEach(node => {
-  node.addEventListener('click', () => activateCountry(node.dataset.target));
+  const targetId = node.dataset.target;
+
+  node.addEventListener('mouseenter', () => activateCountry(targetId));
+  node.addEventListener('focus', () => activateCountry(targetId));
+  node.addEventListener('mouseleave', clearCountryPanels);
+  node.addEventListener('blur', clearCountryPanels);
+
   node.addEventListener('keydown', (event) => {
     if(event.key === 'Enter' || event.key === ' '){
       event.preventDefault();
-      activateCountry(node.dataset.target);
+      activateCountry(targetId);
     }
     if(event.key === 'Escape'){
       clearCountryPanels();
