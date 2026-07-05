@@ -66,7 +66,7 @@ countryNodes.forEach(node => {
 
   node.addEventListener('mouseenter', () => activateCountry(targetId));
   node.addEventListener('focus', () => activateCountry(targetId));
-  node.addEventListener('mouseleave', clearCountryPanels);
+ 
   node.addEventListener('blur', clearCountryPanels);
 
   node.addEventListener('keydown', (event) => {
