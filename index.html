@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Human-Inspired Artificial Intelligence Lab — a Pakistan–Türkiye collaboration at the University of the Punjab." />
+  <title>HIAI Lab | FCIT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="brand" href="#home" aria-label="HIAI Lab home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span></span>
+        <span class="brand-copy">
+          <strong>HIAI Lab</strong>
+          <small>Pakistan × Türkiye</small>
+        </span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-controls="siteNav" aria-expanded="false">
+        <span></span><span></span>
+        <span class="sr-only">Toggle menu</span>
+      </button>
+
+      <nav class="site-nav" id="siteNav" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#host">Collaboration</a>
+        <a href="#facilities">Facilities</a>
+        <a href="#outcomes">Outcomes</a>
+        <a href="#contact" class="nav-cta">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="container hero-inner">
+        <div class="hero-copy reveal visible">
+          <p class="eyebrow">TİKA-funded academic collaboration</p>
+          <h1 id="hero-title">Human-Inspired Artificial Intelligence Lab</h1>
+          <p class="hero-lead">A focused AI research lab at the University of the Punjab, built through Pakistan–Türkiye cooperation.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#outcomes">Explore outcomes</a>
+            <a class="btn btn-soft" href="#facilities">View facilities</a>
+          </div>
+
+        </div>
+
+        <aside class="hero-card reveal visible" aria-label="Pakistan and Türkiye collaboration image">
+          <div class="hero-flag-circle">
+            <img src="assets/pakistan-turkiye-flags.png" alt="Pakistan and Türkiye flags blended together" loading="eager">
+          </div>
+          <div class="hero-partner-logos" aria-label="Project partner logos">
+            <div class="hero-logo-box">
+              <img class="pu-logo" src="assets/pu-logo.png" alt="University of the Punjab logo">
+            </div>
+            <div class="hero-logo-box">
+              <img class="tika-logo" src="assets/tika-logo.png" alt="TİKA logo">
+            </div>
+          </div>
+          <div class="hero-mini-grid">
+            <span>Hosted at University of the Punjab</span>
+            <span>Funded by TİKA</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="overview section-pad" id="about">
+      <div class="container split">
+        <div class="section-heading reveal">
+          <p class="eyebrow">About</p>
+          <h2>AI research with a human purpose.</h2>
+        </div>
+        <div class="overview-cards reveal">
+          <article>
+            <span>01</span>
+            <h3>Human-centered</h3>
+            <p>Designed around education, healthcare, agriculture, cities and society.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Collaborative</h3>
+            <p>Connecting the University of the Punjab with TİKA-supported Pakistan–Türkiye cooperation.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Applied</h3>
+            <p>Focused on practical, low-cost and real-time AI outcomes.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="host-collab section-pad" id="host">
+      <div class="container host-collab-grid">
+        <div class="section-heading reveal collab-copy">
+          <p class="eyebrow">Collaboration</p>
+          <h2>Pakistan × Türkiye cooperation for human-centered AI.</h2>
+          <p class="compact-copy">The initiative is shaped by senior university leadership committed to quality education, practical knowledge, and high-impact computing research.</p>
+
+          <div class="leadership-grid">
+            <article class="leadership-card">
+              <img src="assets/vc-prof-muhammad-ali.jpeg" alt="Prof. Dr. Muhammad Ali, Vice Chancellor, University of the Punjab">
+              <div>
+                <span>Lab Patron</span>
+                <h3>Prof. Dr. Muhammad Ali</h3>
+                <p class="leader-role">Vice Chancellor, University of the Punjab</p>
+                <blockquote>“My mission is to raise the productivity of our graduates through quality education and practical knowledge to contribute in a significant way to the national economy.”</blockquote>
+              </div>
+            </article>
+
+            <article class="leadership-card">
+              <img src="assets/dean-prof-shahzad-sarwar.png" alt="Prof. Dr. Shahzad Sarwar, Dean, Faculty of Computing and Information Technology">
+              <div>
+                <span>Lab Director</span>
+                <h3>Prof. Dr. Shahzad Sarwar</h3>
+                <p class="leader-role">Dean, Faculty of Computing and Information Technology</p>
+                <blockquote> "My mission is to provide quality education, hands-on research, and increase Pakistan's footprint in the global IT and software industry."</blockquote>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="interactive-bridge reveal" aria-label="Pakistan and Türkiye collaboration graphic">
+          <div class="bridge-orbit bridge-orbit-one"></div>
+          <div class="bridge-orbit bridge-orbit-two"></div>
+          <button class="country-node pk-node" type="button" data-target="pkPanel" aria-controls="pkPanel" aria-expanded="false">PK</button>
+          <button class="country-node tr-node" type="button" data-target="trPanel" aria-controls="trPanel" aria-expanded="false">TR</button>
+          <div class="bridge-path"></div>
+          <div class="bridge-core">HIAI</div>
+
+          <article class="bridge-detail pk-detail" id="pkPanel" data-panel="pkPanel">
+            <span>Pakistan · PU</span>
+            <h3>Host institution</h3>
+            <div class="detail-facts">
+              <strong>1882</strong><em>PU established</em>
+              <strong>50K+</strong><em>PU students</em>
+              <strong>19</strong><em>Faculties</em>
+              <strong>90%</strong><em>Employability</em>
+            </div>
+          </article>
+
+          <article class="bridge-detail tr-detail" id="trPanel" data-panel="trPanel">
+            <span>Türkiye · TİKA</span>
+            <h3>Cooperation support</h3>
+            <div class="detail-facts">
+              <strong>01</strong><em>Funding</em>
+              <strong>02</strong><em>Training</em>
+              <strong>03</strong><em>Mobility</em>
+              <strong>04</strong><em>Research</em>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="facilities section-pad" id="facilities">
+      <div class="container infra-grid">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Facilities</p>
+          <h2>Core infrastructure for AI work.</h2>
+          <p class="compact-copy">A connected lab environment for data, computing, development, networking and reliable operations.</p>
+        </div>
+
+        <div class="infra-diagram reveal" aria-label="Core infrastructure diagram">
+          <div class="infra-center">AI Lab</div>
+          <div class="infra-item item-storage"><span>Storage</span><small>Backup · recovery</small></div>
+          <div class="infra-item item-server"><span>Compute</span><small>Training · testing</small></div>
+          <div class="infra-item item-gpu"><span>GPU Workstations</span><small>Model development</small></div>
+          <div class="infra-item item-network"><span>Network</span><small>High-speed internet</small></div>
+          <div class="infra-item item-power"><span>Power & Cooling</span><small>Solarized support</small></div>
+          <svg class="infra-lines" viewBox="0 0 640 420" aria-hidden="true">
+            <path d="M320 210 C210 115 135 85 88 78" />
+            <path d="M320 210 C430 110 520 72 552 78" />
+            <path d="M320 210 C210 215 130 210 80 210" />
+            <path d="M320 210 C430 215 500 210 560 210" />
+            <path d="M320 210 C320 300 320 350 320 365" />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="outcomes section-pad" id="outcomes">
+      <div class="container">
+        <div class="section-heading center reveal">
+          <p class="eyebrow">Technical outcomes</p>
+          <h2>Applied AI domains</h2>
+          <p>Low-cost, real-time, personalized and humanistic systems.</p>
+        </div>
+        <div class="outcome-card-grid reveal" aria-label="Applied AI domains">
+          <article class="outcome-card outcome-education">
+            <span>01</span>
+            <h3>Education</h3>
+            <p>Personalized learning and assessment through natural language processing.</p>
+          </article>
+          <article class="outcome-card outcome-vision">
+            <span>02</span>
+            <h3>Computer vision</h3>
+            <p>Crop disease, precision agriculture, autonomous vehicles and patient care.</p>
+          </article>
+          <article class="outcome-card outcome-robotics">
+            <span>03</span>
+            <h3>Robotics</h3>
+            <p>Field assistance, drone surveillance and surveying workflows.</p>
+          </article>
+          <article class="outcome-card outcome-health">
+            <span>04</span>
+            <h3>Healthcare</h3>
+            <p>Diagnostics, drug discovery, DNA sequencing and medical imaging.</p>
+          </article>
+          <article class="outcome-card outcome-cities">
+            <span>05</span>
+            <h3>Smart cities</h3>
+            <p>IoT, smart metering and transportation intelligence.</p>
+          </article>
+          <article class="outcome-card outcome-foundations">
+            <span>06</span>
+            <h3>AI foundations</h3>
+            <p>Machine learning, deep learning, data science, NLP and visualization.</p>
+          </article>
+        </div>      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand footer-brand" href="#home" aria-label="HIAI Lab home">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span></span>
+          <span><strong>HIAI Lab</strong><small>Pakistan × Türkiye</small></span>
+        </a>
+        <p>Human-Inspired Artificial Intelligence Lab, University of the Punjab, Lahore.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="mailto:info@pucit.edu.pk">info@pucit.edu.pk</a>
+        <span>Lahore, Pakistan</span>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="#about">About</a>
+        <a href="#host">Collaboration</a>
+        <a href="#facilities">Facilities</a>
+        <a href="#outcomes">Outcomes</a>
+      </div>
+    </div>
+    <div class="container footer-logo-row" aria-label="Project logos">
+      <span class="footer-logo-box"><img class="pu-logo" src="assets/pu-logo.png" alt="University of the Punjab logo"></span>
+      <span class="footer-logo-box"><img class="tika-logo" src="assets/tika-logo.png" alt="TİKA logo"></span>
+    </div>
+
+    <div class="container footer-bottom">
+      <span>© 2025 Human-Inspired AI Lab, University of the Punjab. All rights reserved.</span>
+      <span>TİKA-funded Pakistan–Türkiye initiative.</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
