@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Events and milestones of the Human-Inspired AI Lab at FCIT, University of the Punjab." />
+  <title>Events | HIAI Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/jpeg" href="assets/hiai-logo.jpeg">
+  <link rel="apple-touch-icon" href="assets/hiai-logo.jpeg">
+  <style>
+    /* ── Events page styles ── */
+
+    .ev-hero {
+      background: var(--forest);
+       padding: 64px 0 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .ev-hero:after {
+      content: "";
+      position: absolute;
+      right: -80px; top: -80px;
+      width: 380px; height: 380px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.05);
+      pointer-events: none;
+    }
+    .ev-hero:before {
+      content: "";
+      position: absolute;
+      right: 80px; top: 30px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.04);
+      pointer-events: none;
+    }
+    .ev-hero .eyebrow { color: var(--moss); }
+    .ev-hero h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 700; color: #fff;
+      line-height: 1.05; margin: 12px 0 14px;
+      letter-spacing: -.025em;
+    }
+    .ev-hero-lead {
+      color: rgba(255,255,255,.5);
+      font-size: .95rem; max-width: 440px;
+      line-height: 1.65; margin: 0;
+    }
+    .ev-stats {
+      display: flex; gap: 36px;
+      margin-top: 36px;
+    }
+    .ev-stat strong {
+      display: block;
+      font-family: "Playfair Display", serif;
+      font-size: 1.9rem; font-weight: 700;
+      color: #fff; line-height: 1;
+    }
+    .ev-stat span {
+      font-family: "DM Mono", monospace;
+      font-size: .6rem; letter-spacing: .16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.35);
+      margin-top: 3px; display: block;
+    }
+
+    /* ── Timeline ── */
+    .ev-body {
+      background: var(--bg);
+      padding: 72px 0 96px;
+    }
+    .ev-timeline { position: relative; }
+    .ev-timeline:before {
+      content: "";
+      position: absolute;
+      left: 94px; top: 18px; bottom: 0;
+      width: 1.5px;
+      background: linear-gradient(to bottom, var(--moss) 0%, var(--moss) 88%, transparent 100%);
+      opacity: .28;
+    }
+
+    .ev-item {
+      display: grid;
+      grid-template-columns: 94px 1fr;
+      gap: 0 36px;
+      margin-bottom: 56px;
+      position: relative;
+    }
+    .ev-item:last-child { margin-bottom: 0; }
+
+    /* Date column */
+    .ev-date-col {
+      padding-top: 6px;
+      text-align: right;
+      position: relative;
+    }
+    .ev-day {
+      font-family: "Playfair Display", serif;
+      font-size: 2rem; font-weight: 700;
+      color: var(--forest); line-height: 1;
+    }
+    .ev-mon {
+      font-family: "DM Mono", monospace;
+      font-size: .6rem; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--clay);
+      margin-top: 3px;
+    }
+    .ev-yr {
+      font-family: "DM Mono", monospace;
+      font-size: .58rem; letter-spacing: .1em;
+      color: var(--muted);
+    }
+    .ev-dot {
+      position: absolute;
+      right: -44px; top: 12px;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--moss);
+      z-index: 2;
+    }
+
+    /* Card */
+    .ev-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: box-shadow .2s ease;
+    }
+    .ev-card:hover { box-shadow: 0 16px 40px rgba(19,33,29,.08); }
+
+    .ev-card-head {
+      padding: 22px 24px 18px;
+      border-bottom: 1px solid var(--line);
+    }
+    .ev-card-tag {
+      font-family: "DM Mono", monospace;
+      font-size: .58rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--clay);
+      margin-bottom: 5px;
+    }
+    .ev-card-title {
+      font-family: "Playfair Display", serif;
+      font-size: 1.28rem; font-weight: 700;
+      color: var(--forest); line-height: 1.15;
+      margin-bottom: 6px;
+    }
+    .ev-card-desc {
+      color: var(--muted);
+      font-size: .83rem; line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Gallery area */
+    .ev-gallery-wrap { padding: 20px 24px 24px; }
+
+    /* Big featured image stage */
+    .ev-stage {
+      position: relative;
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--sage);
+      border: 1px solid var(--line);
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+    /* single-image cards: no pointer cursor */
+    .ev-stage.no-advance { cursor: default; }
+
+    /* to this */
+    .ev-stage-inner {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      max-height: 420px;
+    }
+    .ev-slide {
+      position: absolute; inset: 0;
+      will-change: transform, opacity;
+      transition: transform .5s cubic-bezier(.22,.68,0,1.15), opacity .4s ease;
+    }
+    .ev-slide img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+
+    /* hover overlay */
+    .ev-stage:hover .ev-stage-overlay { opacity: 1; }
+    .ev-stage.no-advance:hover .ev-stage-overlay { opacity: 0; }
+    .ev-stage-overlay {
+      position: absolute; inset: 0;
+      background: rgba(13,59,46,.1);
+      opacity: 0; transition: .2s;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 3;
+    }
+    .ev-stage-overlay span {
+      font-family: "DM Mono", monospace;
+      font-size: .58rem; letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #fff;
+      background: rgba(13,59,46,.6);
+      padding: 6px 14px; border-radius: 999px;
+    }
+
+    /* counter + ba pill */
+    .ev-stage-meta {
+      position: absolute; bottom: 10px; left: 10px; right: 10px;
+      display: flex; justify-content: space-between; align-items: flex-end;
+      z-index: 4; pointer-events: none;
+    }
+    .ev-counter {
+      font-family: "DM Mono", monospace;
+      font-size: .54rem; letter-spacing: .12em;
+      background: rgba(13,59,46,.7); color: #fff;
+      padding: 3px 9px; border-radius: 999px;
+    }
+    .ev-ba-pill {
+      font-family: "DM Mono", monospace;
+      font-size: .5rem; letter-spacing: .13em;
+      text-transform: uppercase;
+      background: var(--clay); color: #fff;
+      padding: 3px 9px; border-radius: 999px;
+    }
+
+    /* Thumbnail strip */
+    .ev-thumbs {
+      display: flex; gap: 7px; flex-wrap: wrap;
+    }
+    .ev-thumb {
+      width: 66px; height: 50px;
+      border-radius: 8px; overflow: hidden;
+      border: 2px solid transparent;
+      cursor: pointer; transition: .18s;
+      background: var(--sage); flex-shrink: 0;
+    }
+    .ev-thumb:hover { border-color: var(--moss); opacity: .85; }
+    .ev-thumb.active {
+      border-color: var(--moss);
+      box-shadow: 0 0 0 2px rgba(126,155,140,.28);
+    }
+    .ev-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* "More coming" footer card */
+    .ev-more {
+      border: 1px dashed rgba(13,59,46,.18);
+      background: rgba(255,253,248,.5);
+      border-radius: var(--radius);
+      padding: 32px; text-align: center;
+      margin-top: 56px;
+    }
+    .ev-more-icon {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--sage);
+      border: 1px solid rgba(13,59,46,.1);
+      display: grid; place-items: center;
+      margin: 0 auto 14px;
+    }
+    .ev-more strong {
+      display: block; color: var(--forest);
+      font-size: .95rem; font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .ev-more p { color: var(--muted); font-size: .83rem; }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .ev-timeline:before { left: 72px; }
+      .ev-item { grid-template-columns: 72px 1fr; gap: 0 24px; }
+      .ev-dot { right: -34px; }
+      .ev-day { font-size: 1.6rem; }
+      .ev-stage-inner { aspect-ratio: 16 / 9; }
+      .ev-stats { gap: 24px; }
+    }
+    @media (max-width: 480px) {
+      .ev-hero { padding: 56px 0 48px; }
+      .ev-timeline:before { display: none; }
+      .ev-item { grid-template-columns: 1fr; gap: 12px 0; }
+      .ev-date-col { text-align: left; display: flex; align-items: baseline; gap: 8px; }
+      .ev-dot { display: none; }
+      .ev-day { font-size: 1.4rem; }
+      .ev-mon, .ev-yr { margin-top: 0; }
+      .ev-stage-inner { aspect-ratio: 16 / 9; }
+      .ev-thumb { width: 52px; height: 40px; }
+      .ev-stats { flex-wrap: wrap; gap: 16px; }
+    }
+
+    .site-header:not(.scrolled) .site-nav a {
+      color: rgba(255,255,255,.75);
+      font-weight: 400;
+    }
+    .site-header:not(.scrolled) .site-nav a:hover,
+    .site-header:not(.scrolled) .site-nav a.active {
+      color: #fff;
+    }
+    .site-header:not(.scrolled) .brand-copy strong,
+    .site-header:not(.scrolled) .brand-copy small {
+      color: #fff;
+    }
+    .site-header:not(.scrolled) .nav-cta {
+      border-color: rgba(255,255,255,.4);
+      color: #fff;
+    }
+    
+    @media (max-width: 768px) {
+  .site-header:not(.scrolled) .site-nav {
+    background: var(--forest);
+  }
+  .site-header:not(.scrolled) .menu-toggle span {
+    background: #fff;
+  }
+}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="HIAI Lab home">
+        <img src="assets/hiai-logo.jpeg" alt="HIAI Lab logo" class="brand-mark-img" style="height:40px;width:40px;object-fit:contain;">
+        <span class="brand-copy">
+          <strong>HIAI Lab</strong>
+          <small>Pakistan × Türkiye</small>
+        </span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-controls="siteNav" aria-expanded="false">
+        <span></span><span></span>
+        <span class="sr-only">Toggle menu</span>
+      </button>
+
+      <nav class="site-nav" id="siteNav" aria-label="Main navigation">
+        <a href="index.html#about">About</a>
+        <a href="index.html#host">Collaboration</a>
+        <a href="index.html#facilities">Facilities</a>
+        <a href="index.html#outcomes">Outcomes</a>
+        <a href="events.html" class="active">Events</a>
+        <a href="index.html#contact" class="nav-cta">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- Hero strip -->
+    <section class="ev-hero">
+      <div class="container">
+        <p class="eyebrow">Events</p>
+        <h1>Lab milestones<br><span style="font-family: 'Times New Roman', Times, serif;">&amp;</span> activities.</h1>
+        <p class="ev-hero-lead">A record of the Human-Inspired AI Lab's progress — from conception to a fully operational research facility.</p>
+        <div class="ev-stats">
+          <div class="ev-stat"><strong>3</strong><span>Events so far</span></div>
+          <div class="ev-stat"><strong>2026</strong><span>Founded</span></div>
+          <div class="ev-stat"><strong>in FCIT</strong><span>Punjab University</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="ev-body">
+      <div class="container">
+        <div class="ev-timeline">
+
+          <!-- ── EVENT 02 — Readiness Inspection ── -->
+          <!--
+            Images needed in assets/events/:
+              readiness-main.jpg   — hero/featured image
+              readiness-before.jpg — before state
+              readiness-after.jpg  — after state
+              readiness-img-1.jpg  — gallery extra 1
+              readiness-img-2.jpg  — gallery extra 2
+          -->
+          <div class="ev-item reveal">
+            <div class="ev-date-col">
+              <div class="ev-day">15</div>
+              <div class="ev-mon">Jul</div>
+              <div class="ev-yr">2025</div>
+              <div class="ev-dot"></div>
+            </div>
+            <article class="ev-card">
+              <div class="ev-card-head">
+                <p class="ev-card-tag">Event 02</p>
+                <h2 class="ev-card-title">Readiness Inspection</h2>
+                <p class="ev-card-desc">A comprehensive inspection of the laboratory facilities, equipment and research environment was successfully completed.</p>
+              </div>
+              <div class="ev-gallery-wrap">
+                <div class="ev-stage" id="stage02" onclick="advance('g02')">
+                  <div class="ev-stage-inner" id="si02">
+                    <!-- slides injected by JS -->
+                  </div>
+                  <div class="ev-stage-overlay"><span>tap to advance →</span></div>
+                  <div class="ev-stage-meta">
+                    <span class="ev-counter" id="count02">1 / 6</span>
+                    <span class="ev-ba-pill" id="bapill02" style="display:none;"></span>
+                  </div>
+                </div>
+                <div class="ev-thumbs" id="thumbs02"></div>
+              </div>
+            </article>
+          </div>
+
+          <!-- ── EVENT 01 — Hardware Delivery ── -->
+          <!--
+            Images needed in assets/events/:
+              hardware-img-1.jpg through hardware-img-6.jpg
+            Add or remove <slide> entries in the JS galleries object below to match however many you have.
+          -->
+          <div class="ev-item reveal">
+            <div class="ev-date-col">
+              <div class="ev-day">04</div>
+              <div class="ev-mon">Jul</div>
+              <div class="ev-yr">2025</div>
+              <div class="ev-dot"></div>
+            </div>
+            <article class="ev-card">
+              <div class="ev-card-head">
+                <p class="ev-card-tag">Event 01</p>
+                <h2 class="ev-card-title">Hardware Delivery</h2>
+                <p class="ev-card-desc">Delivery of essential hardware infrastructure for advanced AI research and development, including GPU workstations and networking equipment.</p>
+              </div>
+              <div class="ev-gallery-wrap">
+                <div class="ev-stage" id="stage01" onclick="advance('g01')">
+                  <div class="ev-stage-inner" id="si01">
+                    <!-- slides injected by JS -->
+                  </div>
+                  <div class="ev-stage-overlay"><span>tap to advance →</span></div>
+                  <div class="ev-stage-meta">
+                    <span class="ev-counter" id="count01">1 / 5</span>
+                  </div>
+                </div>
+                <div class="ev-thumbs" id="thumbs01"></div>
+              </div>
+            </article>
+          </div>
+
+          <!-- ── EVENT 00 — Lab Design ── -->
+          <!--
+            Images needed in assets/events/:
+              design-main.jpg — single image, no gallery
+          -->
+          <div class="ev-item reveal">
+            <div class="ev-date-col">
+              <div class="ev-day">20</div>
+              <div class="ev-mon">Jun</div>
+              <div class="ev-yr">2025</div>
+              <div class="ev-dot"></div>
+            </div>
+            <article class="ev-card">
+              <div class="ev-card-head">
+                <p class="ev-card-tag">Event 00</p>
+                <h2 class="ev-card-title">Lab Design</h2>
+                <p class="ev-card-desc">The first official planning session of the Human-Inspired AI Lab team, establishing the spatial design, layout and infrastructure blueprint for the facility.</p>
+              </div>
+              <div class="ev-gallery-wrap">
+                <div class="ev-stage no-advance" id="stage00">
+                  <div class="ev-stage-inner" id="si00">
+                    <!-- single slide injected by JS -->
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+        </div><!-- /.ev-timeline -->
+
+        <div class="ev-more reveal">
+          <div class="ev-more-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0D3B2E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+          </div>
+          <strong>More events coming soon…</strong>
+          <p>Stay tuned for updates on the Human-Inspired AI Lab's journey.</p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="footer-brand">HIAI Lab — FCIT, University of the Punjab</p>
+      <p class="footer-copy">&copy; 2025 Human-Inspired AI Lab. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    /*
+     * ── Gallery data ──────────────────────────────────────────────
+     * Each entry in `slides` maps to one image.
+     *   src  — path relative to events.html (assets/events/...)
+     *   ba   — optional "Before" / "After" pill label
+     *
+     * TO ADD A NEW EVENT:
+     *   1. Copy an ev-item block in the HTML, update dates/text/IDs
+     *   2. Add a matching entry here in galleries{}
+     *   3. Call setupGallery('gNN') at the bottom
+     *   4. Drop images in assets/events/
+     * ─────────────────────────────────────────────────────────────
+     */
+    const galleries = {
+      g02: {
+        stageInnerId: 'si02',
+        counterId:    'count02',
+        thumbsId:     'thumbs02',
+        baPillId:     'bapill02',
+        slides: [
+          { src: 'assets/events/readiness-main.jpeg'   },
+          { src: 'assets/events/readiness-before.jpeg', ba: 'Before' },
+          { src: 'assets/events/readiness-after.jpeg',  ba: 'After'  },
+          { src: 'assets/events/readiness-img-1.jpeg'  },
+          { src: 'assets/events/readiness-img-2.jpeg'  },
+          { src: 'assets/events/readiness-img-3.jpeg'  },
+        ]
+      },
+      g01: {
+        stageInnerId: 'si01',
+        counterId:    'count01',
+        thumbsId:     'thumbs01',
+        baPillId:     null,
+        slides: [
+          { src: 'assets/events/hardware-img-1.jpeg' },
+          { src: 'assets/events/hardware-img-2.jpeg' },
+          { src: 'assets/events/hardware-img-3.jpeg' },
+          { src: 'assets/events/hardware-img-4.jpeg' },
+          { src: 'assets/events/hardware-img-5.jpeg' },
+        ]
+      },
+      g00: {
+        stageInnerId: 'si00',
+        counterId:    null,
+        thumbsId:     null,
+        baPillId:     null,
+        slides: [
+          { src: 'assets/events/design-main.jpeg' }
+        ]
+      }
+    };
+
+    /* ── state ── */
+    const gState = {};
+
+    /* ── render: show slide at idx, animate in direction dir (1=forward, -1=back) ── */
+    function render(gid, idx, dir) {
+      const g   = galleries[gid];
+      const s   = gState[gid];
+      const inner = document.getElementById(g.stageInnerId);
+      const slides = inner.querySelectorAll('.ev-slide');
+
+      slides.forEach((sl, i) => {
+        if (i === idx) {
+          sl.style.opacity   = '1';
+          sl.style.transform = 'translateY(0)';
+          sl.style.zIndex    = '2';
+        } else {
+          sl.style.opacity   = '0';
+          sl.style.transform = dir >= 0 ? 'translateY(-22px)' : 'translateY(22px)';
+          sl.style.zIndex    = '1';
+        }
+      });
+
+      if (g.counterId)
+        document.getElementById(g.counterId).textContent = (idx + 1) + ' / ' + g.slides.length;
+
+      if (g.baPillId) {
+        const pill = document.getElementById(g.baPillId);
+        const ba   = g.slides[idx].ba;
+        pill.textContent    = ba || '';
+        pill.style.display  = ba ? 'inline-block' : 'none';
+      }
+
+      if (g.thumbsId) {
+        document.getElementById(g.thumbsId)
+          .querySelectorAll('.ev-thumb')
+          .forEach((t, i) => t.classList.toggle('active', i === idx));
+      }
+
+      s.current = idx;
+    }
+
+    /* ── advance: called by onclick on the stage, goes to next slide ── */
+    function advance(gid) {
+      const g = galleries[gid];
+      const s = gState[gid];
+      if (s.animating || g.slides.length <= 1) return;
+      s.animating = true;
+      const next = (s.current + 1) % g.slides.length;
+      render(gid, next, 1);
+      setTimeout(() => s.animating = false, 520);
+    }
+
+    /* ── jumpTo: called by thumbnail click ── */
+    function jumpTo(gid, idx) {
+      const s = gState[gid];
+      if (s.animating) return;
+      s.animating = true;
+      const dir = idx >= s.current ? 1 : -1;
+      render(gid, idx, dir);
+      setTimeout(() => s.animating = false, 520);
+    }
+
+    /* ── setupGallery: build DOM + bind events for one gallery ── */
+    function setupGallery(gid) {
+      const g     = galleries[gid];
+      const inner = document.getElementById(g.stageInnerId);
+      gState[gid] = { current: 0, animating: false };
+
+      /* build slides */
+      g.slides.forEach((sl, i) => {
+        const div = document.createElement('div');
+        div.className     = 'ev-slide';
+        div.style.opacity = i === 0 ? '1' : '0';
+        div.style.transform = i === 0 ? 'translateY(0)' : 'translateY(22px)';
+        div.style.zIndex    = i === 0 ? '2' : '1';
+        const img   = document.createElement('img');
+        img.src     = sl.src;
+        img.alt     = sl.ba ? sl.ba + ' photo' : 'Event photo';
+        img.loading = 'lazy';
+        div.appendChild(img);
+        inner.appendChild(div);
+      });
+
+      /* build thumbnails */
+      if (g.thumbsId && g.slides.length > 1) {
+        const thumbsEl = document.getElementById(g.thumbsId);
+        g.slides.forEach((sl, i) => {
+          const t   = document.createElement('div');
+          t.className = 'ev-thumb' + (i === 0 ? ' active' : '');
+          const img = document.createElement('img');
+          img.src     = sl.src;
+          img.alt     = 'Thumbnail ' + (i + 1);
+          img.loading = 'lazy';
+          t.appendChild(img);
+          t.addEventListener('click', (e) => {
+            e.stopPropagation();
+            jumpTo(gid, i);
+          });
+          thumbsEl.appendChild(t);
+        });
+      }
+    }
+
+    /* ── init all galleries ── */
+    setupGallery('g02');
+    setupGallery('g01');
+    setupGallery('g00');
+  </script>
+</body>
+</html>
